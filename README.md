@@ -1,5 +1,5 @@
 # book
-web knowledge
+Record bits and pieces, bringing together the ocean of knowledge
 ## 前端
 ### html
 [html](/fed/css/html.md)
