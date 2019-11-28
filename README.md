@@ -11,3 +11,7 @@ Record bits and pieces, bringing together the ocean of knowledge！
 [other](/fed/other.md)
 
 ## 后端
+- [shell](/bed/shell.md)
+
+## electron
+[electron](/electron/index.md)
