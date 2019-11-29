@@ -1,5 +1,49 @@
 # 项目实战
 
+## create-react-app
+
+### react-router
+- Router
+- Link
+  - 路由传参 `to="/list/1"`
+- Route
+  - 动态传值`path="/list/:id"`
+- exact精准匹配的意思
+- props.match
+  - patch
+  - url
+  - params
+- 重定向
+  - 标签式重定向 Redirect
+  - 编程式重定向 ` this.props.history.push('/path/');  `
+- 嵌套路由
+
+```
+ <Router>
+    <ul>
+        <li> <Link to="/">首页</Link> </li>
+        <li><Link to="/list/">列表</Link> </li>
+    </ul>
+    <Route path="/" exact component={Index} />
+    <Route path="/list/" component={List} />
+</Router>
+```
+
+### redux
+
+#### store
+
+#### reducer
+
+#### action
+
+
+### axios EasyMock
+[EasyMock网站](https://www.easy-mock.com/)
+
+### react-transition-group
+
+
 ## next
 
 ### 资料

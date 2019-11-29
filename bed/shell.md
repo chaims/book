@@ -14,12 +14,12 @@ find . -type f -print | wc -l  // 查询文件数
 2. 上传
    
 ```
-scp Downloads/images\ 2.zip pre_label.caihao.ws2@wh-a-internal.brainpp.cn:/home/caihao/slabel/pack/data
+scp Downloads/images\ 2.zip xxx.xxx.ws2@xxx.brainpp.cn:/home/xxx/slabel/pack/data
 ```
 3. 下载
    
 ```
-scp pre_label.caihao.ws2@wh-a-internal.brainpp.cn:/home/caihao/slabel/pack/output.tar.gz Downloads 
+scp xxx.xxx.ws2@xxx.brainpp.cn:/home/xxx/slabel/pack/output.tar.gz Downloads 
 ```
 
 4. 解压

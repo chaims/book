@@ -1,6 +1,7 @@
 # react
 <!-- code_chunk_output -->
 - [react](#react)
+  - [简介](#%e7%ae%80%e4%bb%8b)
   - [核心概念](#%e6%a0%b8%e5%bf%83%e6%a6%82%e5%bf%b5)
     - [jsx](#jsx)
     - [元素渲染](#%e5%85%83%e7%b4%a0%e6%b8%b2%e6%9f%93)
@@ -17,10 +18,18 @@
     - [语义化的 HTML](#%e8%af%ad%e4%b9%89%e5%8c%96%e7%9a%84-html)
     - [代码分割](#%e4%bb%a3%e7%a0%81%e5%88%86%e5%89%b2)
     - [Context](#context)
+    - [PropTypes校验传递值](#proptypes%e6%a0%a1%e9%aa%8c%e4%bc%a0%e9%80%92%e5%80%bc)
+    - [Ref的使用](#ref%e7%9a%84%e4%bd%bf%e7%94%a8)
   - [参考资料](#%e5%8f%82%e8%80%83%e8%b5%84%e6%96%99)
 
 <!-- /code_chunk_output -->
+## 简介
 
+三大体系：
+- React.js 用于web开发和组件的编写
+- ReactNative 用于移动端开发
+- ReactVR用于虚拟现实技术的开发
+  
 ## 核心概念
 ### jsx
 - JSX 是一个表达式
@@ -81,6 +90,8 @@ setInterval(tick, 1000);
 - 组件名称必须以大写字母开头，以小写字母开头的组件视为原生 DOM 标签
 - 组合组件和提取组件（将组件拆分为更小的组件）
 - Props 的只读性，组件决不能修改自身的 props
+- 父组件向子组件传递内容，靠属性的形式传递
+- 子组件时不能操作父组件里的数据的，所以需要借助一个父组件的方法，来修改父组件的内容。
 
 ```
 function Welcome(props) {
@@ -114,6 +125,24 @@ class Welcome extends React.Component {
   - State 的更新可能是异步的，所以不要依赖他们的值来更新下一个状态
   - State 的更新会被合并，当你调用`setState()`的时候，React会把你提供的对象合并到当前的`state`
 - 数据是向下流动的
+- 生命周期
+  - Initialization 初始化阶段
+  - Mounting 挂载阶段
+    - componentWillMount （执行一次）
+    - render
+    - componentDidMount  （执行一次）
+  - Updation 更新阶段
+    - props
+      - componentWillReceiveProps
+    - state
+      - shouldComponentUpdate (return true | false)
+      - componentWillUpdate
+      - render
+      - componentDidUpdate
+  - Unmounting 销毁阶段
+    - componentWillUnmount
+
+> 利用shouldComponentUpdate(nextProps, nextState) 两个参数的判断是否变化来决定是否更新
 
 ```
 function Clock(props) {
@@ -194,7 +223,18 @@ function tick() {
   );
 }
 setInterval(tick, 1000);
+
+
+setState回调
+
+this.setState({
+
+}, () => {
+
+})
 ```
+
+
 
 ### 事件处理
 - React 事件的命名采用小驼峰式（camelCase），而不是纯小写。
@@ -492,6 +532,9 @@ function ListItem({ item }) {
 }
 ```
 
+- dangerouslySetInnerHTML 
+- label `htmlFor`
+
 ### 代码分割
 - 打包
   - 使用 `Webpack 或 Browserify` 这类的构建工具来打包文件。
@@ -616,6 +659,41 @@ class ThemedButton extends React.Component {
     return <Button theme={this.context} />;
   }
 }
+```
+
+### PropTypes校验传递值
+
+```
+class Test extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {  }
+    }
+    render() { 
+        return ( this.props.content );
+    }
+}
+ 
+Test.propTypes = {
+  content: PropTypes.string
+}
+Test.defaultProps = {
+  ...
+}
+
+export default Test;
+```
+
+### Ref的使用
+
+```
+changeHandle () {
+  this.setState({
+    inputVal: this.input.value
+  })
+}
+...
+<input ref={(input)=>{this.input=input}} />
 ```
 
 ## 参考资料
