@@ -26,7 +26,27 @@ docker rmi xxx    // 删除images
 docker rm xxx     // 删除docker
 
 docker version
+
+docker save       // 将指定镜像保存成 tar 归档文件
+docker save -o xxx.tar xxx:xx
+
+docker load       // 加载指定的镜像
+docker load -i xxx.tar
+
+
+
+docker import     // 从归档文件中创建镜像。
+docker import xxx.tar xxx:xxx  // 导入镜像
+
+
+docker cp [OPTIONS] CONTAINER:SRC_PATH DEST_PATH|-  // 用于容器与主机之间的数据拷贝
+docker cp /root/test.txt ecef8319d2c8:/root/        // 将主机/www/runoob目录拷贝到容器96f7f14e99ab的/root目录下
+
+
+
 ```
 
 ### 构建私有NPM包
 
+
+### 

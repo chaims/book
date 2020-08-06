@@ -20,6 +20,9 @@
     - [Context](#context)
     - [PropTypes校验传递值](#proptypes%e6%a0%a1%e9%aa%8c%e4%bc%a0%e9%80%92%e5%80%bc)
     - [Ref的使用](#ref%e7%9a%84%e4%bd%bf%e7%94%a8)
+    - [Hook](#hook)
+      - [useState](#usestate)
+      - [useEffect](#useeffect)
   - [参考资料](#%e5%8f%82%e8%80%83%e8%b5%84%e6%96%99)
 
 <!-- /code_chunk_output -->
@@ -695,6 +698,58 @@ changeHandle () {
 ...
 <input ref={(input)=>{this.input=input}} />
 ```
+### Hook
+Hook 是一些可以让你在函数组件里“钩入” React state 及生命周期等特性的函数
+
+- 不编写 class 的情况下使用 state 以及其他的 React 特性
+- 完全可选的，100% 向后兼容的
+- Hook 不会影响你对 React 概念的理解
+
+试图解决：
+- 在组件之间复用状态逻辑很难（Hook 使你在无需修改组件结构的情况下复用状态逻辑）
+- 复杂组件变得难以理解（Hook 将组件中相互关联的部分拆分成更小的函数（比如设置订阅或请求数据））
+- 难以理解的 class（class 不能很好的压缩，并且会使热重载出现不稳定的情况）
+- Hook 使你在非 class 的情况下可以使用更多的 React 特性（React 组件一直更像是函数。而 Hook 则拥抱了函数，同时也没有牺牲 React 的精神原则。）
+
+> 只能在函数最外层调用 Hook。不要在循环、条件判断或者子函数中调用。
+> 只能在 React 的函数组件中调用 Hook。
+
+#### useState
+- useState 唯一的参数就是初始 state。
+- 声明多个 state 变量，多次调用 useState 的时候，保证每次渲染时它们的调用顺序是不变的
+- 
+```
+import React, { useState } from 'react';
+
+function Example() {
+  const [count, setCount] = useState(0);
+  return (
+    <div>
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>
+        Click me
+      </button>
+    </div>
+  );
+}
+```
+#### useEffect
+- useEffect 就是一个 Effect Hook，跟 class 组件中的 componentDidMount、componentDidUpdate 和 componentWillUnmount 具有相同的用途，只不过被合并成了一个 API
+- 调用 useEffect 时，就是在告诉 React 在完成对 DOM 的更改后运行你的“副作用”函数。
+- 由于副作用函数是在组件内声明的，所以它们可以访问到组件的 props 和 state。
+- 跟 useState 一样，你可以在组件中多次使用 useEffect 
+- 使用 Hook，你可以把组件内相关的副作用组织在一起
+- 与 componentDidMount 或 componentDidUpdate 不同，使用 useEffect 调度的 effect 不会阻塞浏览器更新屏幕，这让你的应用看起来响应更快。大多数情况下，effect 不需要同步地执行。在个别情况下（例如测量布局），有单独的 useLayoutEffect Hook 供你使用，其 API 与 useEffect 相同
+ 
+```
+    ...
+    // 相当于 componentDidMount 和 componentDidUpdate:
+    useEffect(() => {
+        document.title = `Clicked ${count}`
+    })
+    ...
+```
+
 
 ## 参考资料
 

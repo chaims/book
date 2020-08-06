@@ -10,8 +10,10 @@ canvas.skipTargetFind = true;               // 整个画板元素不能被选中
 canvas.freeDrawingBrush.color = "#E34F51"   // 设置自由绘画笔的颜色
 freeDrawingBrush.width                      // 自由绘笔触宽度
 
-selectionKey                                // 设置能选择多个控件的按键，默认键 ‘shift key’
-altSelectionKey                             // 在preserveObjectStacking = true 才有效，功能？
+- uniScaleKey 默认是 `shiftKey`,按下时，对object 调整时，不固定比例
+- selectionKey 设置能选择多个控件的按键，默认键 `shift key`
+- altSelectionKey  默认`alt key` 当两个目标重合时,按此键调整层级
+- preserveObjectStacking = true 才有效，功能？
 
 
 
@@ -159,6 +161,8 @@ Object:
     scaled
     rotated
     skewed
+    selected
+    deseleted
 
     mouseup
 
@@ -176,3 +180,47 @@ Object:
     dragover
     dragenter
     dragleave
+
+    
+
+### object
+- __uid: 构造svg时，内部使用的唯一的id
+- backgroundColor: 背景色
+- angle: 旋转角度
+- borderColor : 控制对象边界的颜色（当它处于活动状态时）
+- borderDashArray： 指定对象边框的短划线模式的数组（hasBorder必须为true）
+- borderOpacityWhenMoving：对象处于活动和移动状态时对象控制边界的不透明度
+- borderScaleFactor： 控制边界的缩放比例
+- cacheProperties：在检查缓存是否需要刷新时要考虑的属性列表，这些属性由statefullCache打开（如果需要，则为惰性模式）或从对Object.set（key，value）的单个调用中检查。如果键在此列表中，则对象被标记为脏，并在下次呈现时刷新
+- centeredRotation： 如果为true，则该对象在通过控件旋转时将使用圆心作为变换的原点。向后不兼容注意：此属性替换“centerTransform”（布尔值）。
+- centeredScaling：如果为true，则当通过控件缩放时，此对象将使用圆心作为变换的原点。向后不兼容注意：此属性替换“centerTransform”（布尔值）。
+
+
+- hasControls: 是否有控制点
+- cornerStyle： 控制点的类型：circle | rect
+- cornerSize： 控制点大小
+- cornerColor： 控制点颜色
+- cornerStrokeColor： 控制点框颜色
+- hasBorders： 是否有边框
+- borderColor： 边框颜色
+- hasRotatingPoint 是否有旋转点
+- rotatingPointOffset： 旋转控制点距object的距离
+- visible： 画布上是否可见
+- selectable： 是否可被选中
+- evented: 事件是否可用
+- transparentCorners： true，则对象的控制角在内部呈现为透明（即笔划而不是填充）
+- centeredScaling： 以中心为缩放
+- centeredRotation: 以中心点旋转
+- padding: object内边距
+- strokeUniform: 宽度不变换
+
+- setControlVisible 设置控制点是否可见
+
+
+> 默认情况下，通过角点控件调整大小，会保持纵横比，（通过对canvas进行 uniScaleTransform 的设置，已废弃） 默认情况下，按shiftKey可实现自由调整
+
+> rect 在通过控制角调整的情况下，会导致borderWidth变化，通过 `strokeUniform:true` 和 `noScaleCache:false` 去调整
+
+> 两个object重合时，选取下层的操作？
+#### rect
+

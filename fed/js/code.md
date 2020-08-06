@@ -1,7 +1,17 @@
 # code 
 
 ## 应用
-
+### bind
+```
+Function.prototype.bind = function () {
+    var self = this,
+        context = [].shift.call(arguments),
+        args = [].slice.call(arguments);
+    return function () {
+        self.apply(context, [].concat.call(args, [].slice.call(arguments)))
+    }
+}
+```
 ### 网页另存为
 
 ```

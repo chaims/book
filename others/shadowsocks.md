@@ -23,10 +23,10 @@ sudo mkdir /etc/shadowsocks
 sudo vim /etc/shadowsocks/config.json
 
 {
-    "server":"45.77.103.55",
-    "server_port":8388,
+    "server":"xxx.xxx.xxx.xxx",
+    "server_port":xxx,
     "local_address": "127.0.0.1",
-    "local_port":1080,
+    "local_port":xxx,
     "password":"***",
     "timeout":600,
     "method":"chacha20-ietf-poly1305"
