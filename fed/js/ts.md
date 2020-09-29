@@ -273,5 +273,23 @@ class Cat implements Animal {
 }
 ```
 
+### 泛型
+
+- 返回值的类型与传入参数的类型是相同的
+
+
+
+## 进阶
+
+### interface vs type
+
+- 都可以描述对象或函数
+- 都允许拓展，interface use extends，type use &
+- type 可以声明基本类型别名，联合类型，元组等类型， interface不可
+- type 语句中还可以使用 typeof 获取实例的 类型进行赋值
+- interface 能够进行声明的自动合并
+
+> 建议优先 interface > type 
+
 ## 参考资料
 [TS中文](https://www.tslang.cn/samples/index.html)

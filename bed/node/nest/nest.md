@@ -94,6 +94,22 @@ DTO 是一个定义如何通过网络发送数据的对象。
 const app = await NestFactory.create<NestExpressApplication>(ApplicationModule);
 ```
 
+### 邮件服务
+
+### 配置管理
+
+### 服务监控
+```
+yarn add nest-status-monitor
+```
+### JWT
+```
+yarn add @nestjs/passport passport passport-local
+yarn add --dev @types/passport-local
+yarn add passport-jwt
+```
+
+
 ## 参考资料
 
 - [中文文档](https://docs.nestjs.cn/6/recipes?id=openapi-swagger)
