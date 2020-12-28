@@ -49,4 +49,16 @@ docker cp /root/test.txt ecef8319d2c8:/root/        // 将主机/www/runoob目�
 ### 构建私有NPM包
 
 
-### 
+## 常见问题
+
+### ERROR:Docker Got permission denied
+```
+sudo groupadd docker
+sudo usermod -aG docker $USER
+
+newgrp docker 
+docker run hello-world
+```
+
+## 参考资料
+

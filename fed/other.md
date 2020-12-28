@@ -35,3 +35,8 @@ https://github.com/jobbole/awesome-javascript-cn#video-audio
 #### Vue版本
 
 #### Vue核心
+
+
+## 参考
+
+- [H5相关知识](http://cw.hubwiz.com/card/c/54eeb95cf863871d446b24a0/1/8/1/)

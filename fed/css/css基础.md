@@ -5,7 +5,17 @@
 ### rem
 相对于html根元素font-size的值，默认为16px，一般设置为10px(62.5%)方便计算
 
-## 妙用
+## 使用
+
+### flex
+
+- flex-grow     伸张
+- flex-shrink   收缩
+- flex-basis    基础
+
+> 值为0不在考虑空间；缩小时min-content概念
+
+`flex : 1 2 auto`
 
 ### display 
 - grid
